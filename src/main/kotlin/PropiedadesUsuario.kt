@@ -2,7 +2,7 @@ package clasesUsuario
 
 import java.lang.IllegalArgumentException
 
-class PropiedadesUsuario(user: String, password: String, port: String, server: String) {
+class PropiedadesUsuario(user: String = "Usuario", password: String = "abc", port: String = "1", server: String = "1") {
     var user: String = user
         set(value){
             if(user.isEmpty()) throw IllegalArgumentException()
