@@ -33,9 +33,9 @@ fun main() {
         else if(opcion==2){
             println("¿Qué desea cambiar?: U- Usuario  P- Password  R- Port  S- Server")
             var campo = readln().toUpperCase()
-            println("Introduce nuevo valor: ")
-            var valor = readln()
             if(campo=="U"){
+                println("Introduce nuevo valor: ")
+                var valor = readln()
                 var writer: Writer = FileWriter(System.getProperty("user.dir")+System.getProperty("file.separator")+
                         "resources"+System.getProperty("file.separator")+"configuracion.conf")
                 usuario.user = valor
@@ -48,19 +48,23 @@ fun main() {
             else if(campo=="P"){
                 println("Introduce la contraseña antigua: ")
                 if(readln()== usuario.descifrarPass(usuario.password)){
-                var writer: Writer = FileWriter(System.getProperty("user.dir")+System.getProperty("file.separator")+
+                    println("Introduce nuevo valor: ")
+                    var valor = readln()
+                    var writer: Writer = FileWriter(System.getProperty("user.dir")+System.getProperty("file.separator")+
                         "resources"+System.getProperty("file.separator")+"configuracion.conf")
-                usuario.password = valor
-                prop.setProperty("user", usuario.user)
-                prop.setProperty("password",usuario.password)
-                prop.setProperty("port",usuario.port)
-                prop.setProperty("server",usuario.server)
-                prop.store(writer, "Cambio de password")}
+                    usuario.password = valor
+                    prop.setProperty("user", usuario.user)
+                    prop.setProperty("password",usuario.password)
+                    prop.setProperty("port",usuario.port)
+                    prop.setProperty("server",usuario.server)
+                    prop.store(writer, "Cambio de password")}
                 else {
                     println("Contraseña incorrecta")
                 }
             }
             else if(campo=="R"){
+                println("Introduce nuevo valor: ")
+                var valor = readln()
                 var writer: Writer = FileWriter(System.getProperty("user.dir")+System.getProperty("file.separator")+
                         "resources"+System.getProperty("file.separator")+"configuracion.conf")
                 usuario.port = valor
@@ -71,6 +75,8 @@ fun main() {
                 prop.store(writer, "Cambio de puerto")
             }
             else if(campo=="S"){
+                println("Introduce nuevo valor: ")
+                var valor = readln()
                 var writer: Writer = FileWriter(System.getProperty("user.dir")+System.getProperty("file.separator")+
                         "resources"+System.getProperty("file.separator")+"configuracion.conf")
                 usuario.server = valor
@@ -80,7 +86,7 @@ fun main() {
                 prop.setProperty("server",usuario.server)
                 prop.store(writer, "Cambio de server")
             }
-            else{println("Valor no válido")}
+            else{println("Campo no válido")}
         }
         else if(opcion==3){
             println("Adiós!")
